@@ -9,9 +9,17 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Center(
+        appBar: AppBar(
+          backgroundColor: Colors.grey[300],
+          title: const Image(
+            image: AssetImage('assets/images/Image_Logo02.png'),
+            fit: BoxFit.contain,
+            height: 20,
+          )
+        ),
+        body: const Center(
           child: Text('Hello World!'),
         ),
       ),

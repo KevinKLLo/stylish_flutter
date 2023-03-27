@@ -19,31 +19,65 @@ class MainApp extends StatelessWidget {
             height: 20,
           )
         ),
-        body: SizedBox(
-          height: 150,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                width: 200, // 指定固定寬度
-                margin: const EdgeInsets.all(10), // 加上 margin 以設置元素間距
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.blueGrey,
-                ),
-                child: Center(
-                  child: Text(
-                    'Item $index',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
+        body: Column(
+          children: [
+            SizedBox(
+              height: 150,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    width: 200, // 指定固定寬度
+                    margin: const EdgeInsets.all(10), // 加上 margin 以設置元素間距
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.blueGrey,
                     ),
-                  ),
-                ),
-              );
-            },
-          ),
+                    child: Center(
+                      child: Text(
+                        'Item $index',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: 5,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    width: 200, // 指定固定寬度
+                    margin: const EdgeInsets.all(10), // 加上 margin 以設置元素間距
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.blueGrey,
+                    ),
+                    child: Center(
+                      child: SizedBox(
+                        height: 150,
+                        child: Center(
+                          child: Text(
+                            'Item $index',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 24,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
         ),
       ),
     );

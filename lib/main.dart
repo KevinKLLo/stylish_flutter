@@ -66,15 +66,14 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200, // 指定固定寬度
       margin: const EdgeInsets.all(10), // 加上 margin 以設置元素間距
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         color: Colors.blueGrey,
       ),
       child: const Center(
         child: SizedBox(
-          height: 150,
+          height: 120,
           child: Center(
             child: Text(
               'ItemCard',
@@ -98,16 +97,16 @@ class HorizontalListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
+      height: 160,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            width: 200, // 指定固定寬度
+            width: 300, // 指定固定寬度
             margin: const EdgeInsets.all(10), // 加上 margin 以設置元素間距
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(10),
               color: Colors.blueGrey,
             ),
             child: Center(

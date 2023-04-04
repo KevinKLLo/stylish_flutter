@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylish_flutter/detail.dart';
 
 void main() {
   runApp(const MainApp());
@@ -78,27 +79,37 @@ class ItemCard extends StatelessWidget {
       child: Center(
         child: SizedBox(
           height: 120,
-          child: Row(
-            children: [
-              SizedBox(
-                width: 100,
-                child: Image.asset(
-                  'assets/images/Image_Logo02.png',
-                  color: Colors.grey,
+          child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailPage(item: 'itemList[index]'),
                 ),
-              ),
-              const SizedBox(
-                width: 12,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text('UNIQLO 特級輕羽絨外套'),
-                  Text('NT\$ 323'),
-                ],
-              ),
-            ],
+              );
+            },
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 100,
+                  child: Image.asset(
+                    'assets/images/Image_Logo02.png',
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(
+                  width: 12,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text('UNIQLO 特級輕羽絨外套'),
+                    Text('NT\$ 323'),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

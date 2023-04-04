@@ -49,15 +49,10 @@ class HeaderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 40,
-      child: Center(
-        child: Text(
-          '女裝',
-          style: TextStyle(
-            fontSize: 24,
-          ),
-        ),
+    return const Center(
+      child: Text(
+        '女裝',
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
       ),
     );
   }

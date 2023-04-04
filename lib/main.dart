@@ -68,20 +68,37 @@ class ItemCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(10), // 加上 margin 以設置元素間距
       decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.black,
+          width: 1,
+        ),
         borderRadius: BorderRadius.circular(10),
-        color: Colors.blueGrey,
+        // color: Colors.blueGrey,
       ),
-      child: const Center(
+      child: Center(
         child: SizedBox(
           height: 120,
-          child: Center(
-            child: Text(
-              'ItemCard',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
+          child: Row(
+            children: [
+              SizedBox(
+                width: 100,
+                child: Image.asset(
+                  'assets/images/Image_Logo02.png',
+                  color: Colors.grey,
+                ),
               ),
-            ),
+              const SizedBox(
+                width: 12,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text('UNIQLO 特級輕羽絨外套'),
+                  Text('NT\$ 323'),
+                ],
+              ),
+            ],
           ),
         ),
       ),
@@ -107,16 +124,10 @@ class HorizontalListView extends StatelessWidget {
             margin: const EdgeInsets.all(10), // 加上 margin 以設置元素間距
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.blueGrey,
+              color: Colors.grey,
             ),
             child: Center(
-              child: Text(
-                'Item $index',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
+              child: Image.asset('assets/images/Image_Logo02.png'),
             ),
           );
         },

@@ -17,7 +17,25 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text('This is detail page for $item'),
+        child: SizedBox(
+          width: 320,
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.only(top: 24, bottom: 24),
+            child: Column(
+              children: [
+                Container(
+                  height: 450,
+                  color: Colors.grey,
+                ),
+                const SizedBox(height: 16),
+                Container(
+                  height: 450,
+                  color: Colors.grey,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

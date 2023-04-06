@@ -28,52 +28,137 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: SizedBox(
-          width: 320,
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.only(top: 24, bottom: 24),
-            child: ListBody(
+        child: LayoutBuilder(builder: (context, constraints) {
+          if (constraints.maxWidth < 660) {
+            return MobileLayout(content: content);
+          } else {
+            return WebLayout(content: content);
+          }
+        }),
+      ),
+    );
+  }
+}
+
+class MobileLayout extends StatelessWidget {
+  const MobileLayout({
+    super.key,
+    required this.content,
+  });
+
+  final List<String> content;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 320,
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.only(top: 24, bottom: 24),
+        child: ListBody(
+          children: [
+            Container(
+              height: 450,
+              color: Colors.grey,
+            ),
+            const SizedBox(height: 16),
+            ProductInfo(content: content),
+            const SizedBox(height: 16),
+            const GradientTextDivider(),
+            const Text('測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試'),
+            const SizedBox(height: 16),
+            AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Container(
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Container(
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Container(
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Container(
+                color: Colors.grey,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WebLayout extends StatelessWidget {
+  const WebLayout({
+    super.key,
+    required this.content,
+  });
+
+  final List<String> content;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 650,
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.only(top: 24, bottom: 24),
+        child: ListBody(
+          children: [
+            Row(
               children: [
                 Container(
+                  width: 320,
                   height: 450,
                   color: Colors.grey,
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(width: 10),
                 ProductInfo(content: content),
-                const SizedBox(height: 16),
-                const GradientTextDivider(),
-                const Text('測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試'),
-                const SizedBox(height: 16),
-                AspectRatio(
-                  aspectRatio: 2 / 1,
-                  child: Container(
-                    color: Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                AspectRatio(
-                  aspectRatio: 2 / 1,
-                  child: Container(
-                    color: Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                AspectRatio(
-                  aspectRatio: 2 / 1,
-                  child: Container(
-                    color: Colors.grey,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                AspectRatio(
-                  aspectRatio: 2 / 1,
-                  child: Container(
-                    color: Colors.grey,
-                  ),
-                ),
               ],
             ),
-          ),
+            const SizedBox(height: 16),
+            const GradientTextDivider(),
+            const Text('測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試'),
+            const SizedBox(height: 16),
+            AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Container(
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Container(
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Container(
+                color: Colors.grey,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AspectRatio(
+              aspectRatio: 2 / 1,
+              child: Container(
+                color: Colors.grey,
+              ),
+            ),
+          ],
         ),
       ),
     );

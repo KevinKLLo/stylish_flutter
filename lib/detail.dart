@@ -64,7 +64,8 @@ class MobileLayout extends StatelessWidget {
             ProductInfo(content: content),
             const SizedBox(height: 16),
             const GradientTextDivider(),
-            const Text('測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試'),
+            const Text(
+                '細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明'),
             const SizedBox(height: 16),
             AspectRatio(
               aspectRatio: 2 / 1,
@@ -117,6 +118,7 @@ class WebLayout extends StatelessWidget {
         child: ListBody(
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   width: 320,
@@ -129,7 +131,8 @@ class WebLayout extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             const GradientTextDivider(),
-            const Text('測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試'),
+            const Text(
+                '細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明'),
             const SizedBox(height: 16),
             AspectRatio(
               aspectRatio: 2 / 1,
@@ -286,10 +289,18 @@ class ProductInfo extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.black87,
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero),
               ),
-              child: const Text('請選擇尺寸'),
+              child: const Text(
+                '請選擇尺寸',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ),
           const SizedBox(height: 8),

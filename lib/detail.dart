@@ -42,6 +42,35 @@ class DetailPage extends StatelessWidget {
                 ProductInfo(content: content),
                 const SizedBox(height: 16),
                 const GradientTextDivider(),
+                const Text('測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試測試'),
+                const SizedBox(height: 16),
+                AspectRatio(
+                  aspectRatio: 2 / 1,
+                  child: Container(
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                AspectRatio(
+                  aspectRatio: 2 / 1,
+                  child: Container(
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                AspectRatio(
+                  aspectRatio: 2 / 1,
+                  child: Container(
+                    color: Colors.grey,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                AspectRatio(
+                  aspectRatio: 2 / 1,
+                  child: Container(
+                    color: Colors.grey,
+                  ),
+                ),
               ],
             ),
           ),

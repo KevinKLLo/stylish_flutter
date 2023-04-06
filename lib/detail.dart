@@ -223,58 +223,61 @@ class ProductInfo extends StatelessWidget {
           SizedBox(height: 16),
           Text('NT\$ 323'),
           Divider(),
-          Row(
-            children: [
-              Text('顏色'),
-              VerticalDivider(),
-              Container(
-                width: 18,
-                height: 18,
-                color: Colors.red,
-              ),
-              SizedBox(width: 14),
-              Container(
-                width: 18,
-                height: 18,
-                color: Colors.blue,
-              )
-            ],
+          SizedBox(
+            height: 20,
+            child: Row(
+              children: [
+                Text('顏色'),
+                VerticalDivider(),
+                Container(
+                  width: 18,
+                  height: 18,
+                  color: Colors.red,
+                ),
+                SizedBox(width: 14),
+                Container(
+                  width: 18,
+                  height: 18,
+                  color: Colors.blue,
+                )
+              ],
+            ),
           ),
           const SizedBox(height: 16),
-          Row(
-            children: [
-              Text('顏色'),
-              VerticalDivider(),
-              Container(
-                width: 18,
-                height: 18,
-                color: Colors.red,
-              ),
-              SizedBox(width: 14),
-              Container(
-                width: 18,
-                height: 18,
-                color: Colors.blue,
-              )
-            ],
+          SizedBox(
+            height: 20,
+            child: Row(
+              children: const [
+                Text('尺寸'),
+                VerticalDivider(),
+                SizeTag(sizeText: 'S'),
+                SizedBox(width: 14),
+                SizeTag(sizeText: 'M'),
+                SizedBox(width: 14),
+                SizeTag(sizeText: 'L'),
+              ],
+            ),
           ),
           const SizedBox(height: 16),
-          Row(
-            children: [
-              Text('顏色'),
-              VerticalDivider(),
-              Container(
-                width: 18,
-                height: 18,
-                color: Colors.red,
-              ),
-              SizedBox(width: 14),
-              Container(
-                width: 18,
-                height: 18,
-                color: Colors.blue,
-              )
-            ],
+          SizedBox(
+            height: 20,
+            child: Row(
+              children: [
+                Text('數量'),
+                VerticalDivider(),
+                Container(
+                  width: 18,
+                  height: 18,
+                  color: Colors.red,
+                ),
+                SizedBox(width: 14),
+                Container(
+                  width: 18,
+                  height: 18,
+                  color: Colors.blue,
+                )
+              ],
+            ),
           ),
           const SizedBox(height: 16),
           SizedBox(
@@ -305,6 +308,32 @@ class ProductInfo extends StatelessWidget {
                 .toList(growable: false),
           )
         ],
+      ),
+    );
+  }
+}
+
+class SizeTag extends StatelessWidget {
+  const SizeTag({super.key, required this.sizeText});
+
+  final String sizeText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      decoration: BoxDecoration(
+        color: Colors.blueGrey,
+        borderRadius: BorderRadius.circular(21),
+      ),
+      height: 42,
+      child: Center(
+        child: Text(
+          sizeText,
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }

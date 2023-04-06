@@ -40,10 +40,50 @@ class DetailPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 ProductInfo(content: content),
+                const SizedBox(height: 16),
+                const GradientTextDivider(),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class GradientTextDivider extends StatelessWidget {
+  const GradientTextDivider({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: Row(
+        children: [
+          ShaderMask(
+            shaderCallback: (bounds) => const LinearGradient(
+              colors: [Colors.red, Colors.blue],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ).createShader(bounds),
+            child: const Text(
+              '細部說明',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+          const Expanded(
+            child: Divider(
+              thickness: 1.2,
+              color: Colors.blue,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylish_flutter/extension/widget_modifier.dart';
 
 class DetailPage extends StatelessWidget {
   final String item;
@@ -129,8 +130,8 @@ class GradientTextDivider extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-          ),
-          const SizedBox(width: 16),
+          ).addPadding(right: 16),
+          // const SizedBox(width: 16),
           const Expanded(
             child: Divider(
               thickness: 1.2,
@@ -260,16 +261,14 @@ class ProductInfo extends StatelessWidget {
           const SizedBox(height: 8),
           ListBody(
             children: content
-                .map(
-                  (text) => Text(
-                    text,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                      height: 1.5,
-                    ),
-                  ),
-                )
+                .map((text) => Text(
+                      text,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.normal,
+                        height: 1.5,
+                      ),
+                    ))
                 .toList(growable: false),
           )
         ],

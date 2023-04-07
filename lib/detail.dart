@@ -27,14 +27,17 @@ class DetailPage extends StatelessWidget {
           height: 20,
         ),
       ),
-      body: Center(
-        child: LayoutBuilder(builder: (context, constraints) {
-          if (constraints.maxWidth < 660) {
-            return MobileLayout(content: content);
-          } else {
-            return WebLayout(content: content);
-          }
-        }),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.only(top: 24, bottom: 24),
+        child: Center(
+          child: LayoutBuilder(builder: (context, constraints) {
+            if (constraints.maxWidth < 660) {
+              return MobileLayout(content: content);
+            } else {
+              return WebLayout(content: content);
+            }
+          }),
+        ),
       ),
     );
   }
@@ -52,50 +55,17 @@ class MobileLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 320,
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 24, bottom: 24),
-        child: ListBody(
-          children: [
-            Container(
-              height: 450,
-              color: Colors.grey,
-            ),
-            const SizedBox(height: 16),
-            ProductInfo(content: content),
-            const SizedBox(height: 16),
-            const GradientTextDivider(),
-            const Text(
-                '細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明'),
-            const SizedBox(height: 16),
-            AspectRatio(
-              aspectRatio: 2 / 1,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 16),
-            AspectRatio(
-              aspectRatio: 2 / 1,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 16),
-            AspectRatio(
-              aspectRatio: 2 / 1,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 16),
-            AspectRatio(
-              aspectRatio: 2 / 1,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
+      child: ListBody(
+        children: [
+          Container(
+            height: 450,
+            color: Colors.grey,
+          ),
+          const SizedBox(height: 16),
+          ProductInfo(content: content),
+          const SizedBox(height: 16),
+          const ProductDescription(),
+        ],
       ),
     );
   }
@@ -113,56 +83,23 @@ class WebLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 650,
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 24, bottom: 24),
-        child: ListBody(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: 320,
-                  height: 450,
-                  color: Colors.grey,
-                ),
-                const SizedBox(width: 10),
-                ProductInfo(content: content),
-              ],
-            ),
-            const SizedBox(height: 16),
-            const GradientTextDivider(),
-            const Text(
-                '細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明'),
-            const SizedBox(height: 16),
-            AspectRatio(
-              aspectRatio: 2 / 1,
-              child: Container(
+      child: ListBody(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 320,
+                height: 450,
                 color: Colors.grey,
               ),
-            ),
-            const SizedBox(height: 16),
-            AspectRatio(
-              aspectRatio: 2 / 1,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 16),
-            AspectRatio(
-              aspectRatio: 2 / 1,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 16),
-            AspectRatio(
-              aspectRatio: 2 / 1,
-              child: Container(
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
+              const SizedBox(width: 10),
+              ProductInfo(content: content),
+            ],
+          ),
+          const SizedBox(height: 16),
+          const ProductDescription(),
+        ],
       ),
     );
   }
@@ -268,16 +205,31 @@ class ProductInfo extends StatelessWidget {
               children: [
                 Text('數量'),
                 VerticalDivider(),
-                Container(
-                  width: 18,
-                  height: 18,
-                  color: Colors.red,
-                ),
-                SizedBox(width: 14),
-                Container(
-                  width: 18,
-                  height: 18,
-                  color: Colors.blue,
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          debugPrint('--');
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black12),
+                        child: Icon(Icons.remove),
+                      ),
+                      SizedBox(width: 14),
+                      Text('1'),
+                      SizedBox(width: 14),
+                      ElevatedButton(
+                        onPressed: () {
+                          debugPrint('++');
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.black12),
+                        child: Icon(Icons.add),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -287,7 +239,9 @@ class ProductInfo extends StatelessWidget {
             width: double.infinity,
             height: 50,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                debugPrint('tap ElevatedButton');
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black87,
                 shape: const RoundedRectangleBorder(
@@ -320,6 +274,51 @@ class ProductInfo extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class ProductDescription extends StatelessWidget {
+  const ProductDescription({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListBody(
+      children: [
+        const GradientTextDivider(),
+        const Text(
+            '細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明細部說明'),
+        const SizedBox(height: 16),
+        AspectRatio(
+          aspectRatio: 2 / 1,
+          child: Container(
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 16),
+        AspectRatio(
+          aspectRatio: 2 / 1,
+          child: Container(
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 16),
+        AspectRatio(
+          aspectRatio: 2 / 1,
+          child: Container(
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 16),
+        AspectRatio(
+          aspectRatio: 2 / 1,
+          child: Container(
+            color: Colors.grey,
+          ),
+        ),
+      ],
     );
   }
 }

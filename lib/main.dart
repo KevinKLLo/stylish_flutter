@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:stylish_flutter/detail.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:stylish_flutter/Cubit/product_list_cubit.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ProductListCubit()),
+      ],
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -10,6 +19,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    fetchProductList(context);
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -24,15 +35,25 @@ class MainApp extends StatelessWidget {
           children: [
             const HorizontalListView(),
             Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: 5,
-                itemBuilder: (BuildContext context, int index) {
-                  if (index == 0) {
-                    return const HeaderCard();
-                  } else {
-                    return const ItemCard();
+              child: BlocBuilder<ProductListCubit, ProductListState>(
+                builder: (context, state) {
+                  if (state is ProductListLoading) {
+                    return const Center(child: Text('載入中'));
                   }
+                  if (state is ProductListSuccess) {
+                    return ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: state.productList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        if (index == 0) {
+                          return const HeaderCard();
+                        } else {
+                          return const ItemCard();
+                        }
+                      },
+                    );
+                  }
+                  return const Text('出現非預期錯誤');
                 },
               ),
             ),
@@ -40,6 +61,10 @@ class MainApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void fetchProductList(BuildContext context) {
+    context.read<ProductListCubit>().fetchProductList();
   }
 }
 

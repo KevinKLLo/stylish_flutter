@@ -6,7 +6,7 @@ abstract class ProductProvider {
 }
 
 class ProductRepository {
-  final ProductProvider apiProvider = ProductApiProvider();
+  final ProductProvider _apiProvider = ProductApiProvider();
 
-  Future<List<Product>> get fetchProductList => apiProvider.fetchProductList();
+  Future<List<Product>> get fetchProductList => _apiProvider.fetchProductList();
 }

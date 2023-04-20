@@ -8,7 +8,8 @@ class ProductListCubit extends Cubit<ProductListState> {
   ProductListCubit() : super(ProductListLoading());
 
   void fetchProductList() async {
-    List<Product> postList = await _repository.fetchProductList;
+    List<Product> postList = await _repository.fetchProductLists();
+
     emit(ProductListSuccess(postList));
   }
 }

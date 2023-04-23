@@ -5,8 +5,18 @@ class ShoppingCart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('購物車'),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[300],
+        title: const Image(
+          image: AssetImage('assets/images/Image_Logo02.png'),
+          fit: BoxFit.contain,
+          height: 20,
+        ),
+      ),
+      body: const Center(
+        child: Text('購物車'),
+      ),
     );
   }
 }

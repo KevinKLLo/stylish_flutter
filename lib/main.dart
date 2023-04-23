@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylish_flutter/Cubit/product_list_cubit.dart';
 import 'package:stylish_flutter/ui/item_card.dart';
+import 'package:stylish_flutter/ui/shopping_cart.dart';
 
 void main() {
   runApp(
@@ -9,7 +10,7 @@ void main() {
       providers: [
         BlocProvider(create: (context) => ProductListCubit()),
       ],
-      child: const MainApp(),
+      child: const MaterialApp(home: MainApp()),
     ),
   );
 }
@@ -21,45 +22,56 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     fetchProductList(context);
 
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.grey[300],
-          title: const Image(
-            image: AssetImage('assets/images/Image_Logo02.png'),
-            fit: BoxFit.contain,
-            height: 20,
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey[300],
+        title: const Image(
+          image: AssetImage('assets/images/Image_Logo02.png'),
+          fit: BoxFit.contain,
+          height: 20,
         ),
-        body: Column(
-          children: [
-            const HorizontalListView(),
-            Expanded(
-              child: BlocBuilder<ProductListCubit, ProductListState>(
-                builder: (context, state) {
-                  if (state is ProductListLoading) {
-                    return const Center(child: Text('載入中'));
-                  }
-                  if (state is ProductListSuccess) {
-                    return ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemCount: state.productList.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        if (index == 0) {
-                          return const HeaderCard();
-                        } else {
-                          var product = state.productList[index];
-                          return ItemCard(product);
-                        }
-                      },
-                    );
-                  }
-                  return const Text('出現非預期錯誤');
-                },
-              ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const ShoppingCart()),
+              // );
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const ShoppingCart()));
+            },
+            icon: const Icon(Icons.shopping_cart),
+          )
+        ],
+      ),
+      body: Column(
+        children: [
+          const HorizontalListView(),
+          Expanded(
+            child: BlocBuilder<ProductListCubit, ProductListState>(
+              builder: (context, state) {
+                if (state is ProductListLoading) {
+                  return const Center(child: Text('載入中'));
+                }
+                if (state is ProductListSuccess) {
+                  return ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: state.productList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      if (index == 0) {
+                        return const HeaderCard();
+                      } else {
+                        var product = state.productList[index];
+                        return ItemCard(product);
+                      }
+                    },
+                  );
+                }
+                return const Text('出現非預期錯誤');
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

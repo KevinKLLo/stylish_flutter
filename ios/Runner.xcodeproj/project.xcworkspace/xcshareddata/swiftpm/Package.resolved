@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "tappay-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TapPay/tappay-ios-sdk.git",
+      "state" : {
+        "revision" : "10084165fb102651d81d6bac84603093d4b5bfad",
+        "version" : "2.16.4"
+      }
+    }
+  ],
+  "version" : 2
+}

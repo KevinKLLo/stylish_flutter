@@ -4,6 +4,9 @@ import TPDirect
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
+    
+    var flutterResult: FlutterResult?
+
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -16,7 +19,8 @@ import TPDirect
         
         // 2. 偵測呼叫的 method
         shoppingCartChannel.setMethodCallHandler({
-            [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
+            [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) -> Void in
+            self?.flutterResult = result
             // This method is invoked on the UI thread.
             // Handle battery messages.
             switch call.method {
@@ -40,6 +44,18 @@ extension AppDelegate {
     
     private func tapPay() {
         let vc = TPDViewController()
+        vc.delegate = self
         window?.rootViewController?.present(vc, animated: true)
+    }
+}
+
+extension AppDelegate: TPDViewControllerDelegate {
+
+    func getPrimeSuccess(prime: String) {
+        flutterResult?(prime)
+    }
+    
+    func getPrimeFail(errorMsg: String) {
+        flutterResult?(errorMsg)
     }
 }

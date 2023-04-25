@@ -78,12 +78,18 @@ extension TPDViewController {
             let result = "Prime : \(prime!),\n card identifier : \(cardIdentifier!),\n merchantReferenceInfo : \(merchantReferenceInfo["affiliateCodes"]!),\nLastFour : \(cardInfo!.lastFour!),\n Bincode : \(cardInfo!.bincode!),\n Issuer : \(cardInfo!.issuer!),\n Issuer_zh_tw : \(cardInfo!.issuerZhTw),\n bank_id : \(cardInfo!.bankId),\n cardType : \(cardInfo!.cardType),\n funding : \(cardInfo!.cardType),\n country : \(cardInfo!.country!),\n countryCode : \(cardInfo!.countryCode!),\n level : \(cardInfo!.level!)"
 
             self?.delegate?.getPrimeSuccess(prime: prime!)
-//            self?.dismiss(animated: true)
+
+            DispatchQueue.main.async { [weak self] in
+                self?.dismiss(animated: true)
+            }
             
         }).onFailureCallback({ [weak self] (status, message) in
             let errorMsg = "status : \(status) , Message : \(message)"
             self?.delegate?.getPrimeFail(errorMsg: errorMsg)
-//            self?.dismiss(animated: true)
+
+            DispatchQueue.main.async { [weak self] in
+                self?.dismiss(animated: true)
+            }
         })
     }
     

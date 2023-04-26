@@ -11,7 +11,6 @@
 		2DDEEEB9B6C33AA7DCCCF6B3 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEDC6C490786C4B8A7B19A6 /* Pods_Runner.framework */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
-		95D6B55F29F57DF2004EF344 /* TPDirectSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 95D6B55E29F57DF2004EF344 /* TPDirectSDK */; };
 		95D6B56129F586CE004EF344 /* TPDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D6B56029F586CE004EF344 /* TPDViewController.swift */; };
 		95D6B57429F6C117004EF344 /* card_jcb.png in Resources */ = {isa = PBXBuildFile; fileRef = 95D6B56429F6C117004EF344 /* card_jcb.png */; };
 		95D6B57529F6C117004EF344 /* card_amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95D6B56529F6C117004EF344 /* card_amex@2x.png */; };
@@ -89,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95D6B55F29F57DF2004EF344 /* TPDirectSDK in Frameworks */,
 				2DDEEEB9B6C33AA7DCCCF6B3 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,7 +102,6 @@
 				C8D2F461C0C1D6FE1A41DAE5 /* Pods-Runner.release.xcconfig */,
 				93256720E5449705BA23816C /* Pods-Runner.profile.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -217,7 +214,6 @@
 			);
 			name = Runner;
 			packageProductDependencies = (
-				95D6B55E29F57DF2004EF344 /* TPDirectSDK */,
 			);
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
@@ -248,7 +244,7 @@
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
 			packageReferences = (
-				95D6B55D29F57DF2004EF344 /* XCRemoteSwiftPackageReference "tappay-ios-sdk.git" */,
+				95D6B55D29F57DF2004EF344 /* XCRemoteSwiftPackageReference "tappay-ios-sdk" */,
 			);
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
 			projectDirPath = "";
@@ -644,7 +640,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		95D6B55D29F57DF2004EF344 /* XCRemoteSwiftPackageReference "tappay-ios-sdk.git" */ = {
+		95D6B55D29F57DF2004EF344 /* XCRemoteSwiftPackageReference "tappay-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TapPay/tappay-ios-sdk.git";
 			requirement = {
@@ -653,14 +649,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		95D6B55E29F57DF2004EF344 /* TPDirectSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 95D6B55D29F57DF2004EF344 /* XCRemoteSwiftPackageReference "tappay-ios-sdk.git" */;
-			productName = TPDirectSDK;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 97C146E61CF9000F007C117D /* Project object */;
 }

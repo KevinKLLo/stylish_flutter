@@ -1,6 +1,7 @@
 import UIKit
 import Flutter
 import TPDirect
+import GoogleMaps
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -31,6 +32,7 @@ import TPDirect
             }
         })
         
+        GMSServices.provideAPIKey("AIzaSyCnFlTZ7wy0qUlFkeMpsklzAknP9-XJPzo")
         GeneratedPluginRegistrant.register(with: self)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }

@@ -34,8 +34,8 @@ class MainApp extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => const Map()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const MapView()));
             },
             icon: const Icon(Icons.map_outlined),
           ),

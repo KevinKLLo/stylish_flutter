@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stylish_flutter/Cubit/product_list_cubit.dart';
 import 'package:stylish_flutter/ui/item_card.dart';
 import 'package:stylish_flutter/ui/shopping_cart.dart';
+import 'package:stylish_flutter/ui/map.dart';
 
 void main() {
   runApp(
@@ -33,15 +34,20 @@ class MainApp extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const ShoppingCart()),
-              // );
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const ShoppingCart()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const MapView()));
+            },
+            icon: const Icon(Icons.map_outlined),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ShoppingCart()),
+              );
             },
             icon: const Icon(Icons.shopping_cart),
-          )
+          ),
         ],
       ),
       body: Column(
